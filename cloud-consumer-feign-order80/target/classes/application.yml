@@ -1,0 +1,24 @@
+# 建议：凡是微服务一定写微服务名称和端口号
+
+server:
+  # 服务端口号
+  port: 80
+
+eureka:
+  client:
+    fetch-registry: true  #不注册自己
+    service-url:
+      # defaultZone: http://www.eureka7002.com:7002/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/  # 集群
+
+#设置feign客户端超时时间(OpenFeign默认支持Ribbon)
+ribbon:
+  # 建立连接后从服务器读取到可用资源所用的时间    5000 --> 5s
+  ReadTimeout: 5000
+  # 建立连接所用的时间。网络正常下，两端连接所用的时间。
+  ConnectTimeout: 5000
+
+logging:
+  level:
+    # fegin日志以什么形式监控哪个接口
+    com.dk.springcloud.service.PaymentFeignService: debug

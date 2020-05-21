@@ -1,0 +1,35 @@
+# 建议：凡是微服务一定写微服务名称和端口号
+
+server:
+  # 服务端口号
+  port: 8002
+
+spring:
+  application:
+    #服务名称
+    name: cloud-payment-service
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource   # 当前数据源操作类型  druid
+    # driver-class-name: org.gjt.mm.mysql.Driver     # mysql驱动包
+    driver-class-name: com.mysql.cj.jdbc.Driver
+   # driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db2020_cloud?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      # defaultZone: http://eureka7001.com:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/  #集群
+  instance:
+    instance-id: payment8002
+    prefer-ip-address: true  #访问路径可以显示IP地址
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dk.springcloud.entities
+

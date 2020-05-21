@@ -1,0 +1,19 @@
+# 建议：凡是微服务一定写微服务名称和端口号
+
+server:
+  # 服务端口号
+  port: 8001
+
+spring:
+  application:
+    #服务名称
+    name: cloud-provider-hystrix-payment
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      # defaultZone: http://eureka7001.com:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/  #集群
+

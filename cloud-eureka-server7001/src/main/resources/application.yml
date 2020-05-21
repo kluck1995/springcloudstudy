@@ -1,0 +1,19 @@
+# 建议：凡是微服务一定写微服务名称和端口号
+
+server:
+  # 服务端口号
+  port: 7001
+
+eureka:
+  instance:
+    hostname: eureka7001.com # eureka服务端的实例名称
+  client:
+    fetch-registry: false  #不注册自己
+    register-with-eureka: false # 不检索自己
+    service-url:
+      # defaultZone: http://www.eureka7002.com:7002/eureka/
+      defaultZone: http://eureka7002.com:7002/eureka/
+  server:
+    # 关闭自我保护机制，保证不可用服务及时被踢出
+    # enable-self-preservation: false
+    # eviction-interval-timer-in-ms: 2000
