@@ -1,0 +1,25 @@
+# 建议：凡是微服务一定写微服务名称和端口号
+
+server:
+  # 服务端口号
+  port: 80
+
+spring:
+  application:
+    #服务名称
+    name: cloud-comsumer-feign-hystrix-order
+
+eureka:
+  client:
+    # 是否从Eureka server 获取注册信息，默认为true
+    fetch-registry: true
+    # 服务是否注册到Eureka server
+    register-with-eureka: false
+    service-url:
+      # defaultZone: http://www.eureka7002.com:7002/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/  # 集群
+
+feign:
+  hystrix:
+    #开启feign的hystrix支持,默认是false
+    enabled: true
