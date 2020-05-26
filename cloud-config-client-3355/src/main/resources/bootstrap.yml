@@ -1,0 +1,23 @@
+# 建议：凡是微服务一定写微服务名称和端口号
+
+server:
+  # 服务端口号
+  port: 3355
+
+spring:
+  application:
+    name: cloud-config-client   # 注册到Eureka服务器的微服务名
+  cloud:
+    config:
+      label: master  #分支名称
+      name: config  #配置文件名称
+      profile: dev  #读取后缀名称   上述三个综合http://localhost:3344/master/config-dev.yml
+      uri: http://localhost:3344  #配置中心的地址
+
+
+eureka:
+  client:
+    service-url:
+      # defaultZone: http://www.eureka7002.com:7002/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/  # 集群
+
