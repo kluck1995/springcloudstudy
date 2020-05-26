@@ -8,6 +8,13 @@ spring:
   application:
     #服务名称
     name: cloud-payment-service
+  zipkin:
+    # 监控的数据需要打到以下路径上
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      # 采样率值介于0到1之间，1表示全部采集
+      probability: 1
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource   # 当前数据源操作类型  druid
@@ -17,6 +24,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/db2020_cloud?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
+
 
 eureka:
   client:
